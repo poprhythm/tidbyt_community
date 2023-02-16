@@ -1,0 +1,8 @@
+---
+id: plextracks
+name: Plex Tracks
+summary: Display info on currently playing music from Plex server
+desc: Configure with IP/Domain of a plex server, the API key, and it'll show the currently playing track and artwork
+author: poprhythm
+fileName: plextracks.star
+packageName: plextracks
