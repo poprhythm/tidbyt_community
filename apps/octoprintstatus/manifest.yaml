@@ -1,0 +1,8 @@
+---
+id: octoprint-status
+name: OctoPrint Status
+summary: Displays the status of configured Octoprint server
+desc: Displays the current hot end and bed temperatures, currently printing job, elapsed and remaining time, and a progress bar.
+author: poprhythm
+fileName: octoprint_status.star
+packageName: octoprintstatus
