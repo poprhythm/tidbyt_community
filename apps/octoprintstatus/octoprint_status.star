@@ -39,13 +39,13 @@ def main(config):
     toolTemp = float(printer_json["temperature"]["tool0"]["actual"])
     toolTempTarget = float(printer_json["temperature"]["tool0"]["target"])
     heaterImg = HEATER_IMG
-    if toolTempTarget != None: # animated icon if it is heating
+    if toolTempTarget != None and toolTempTarget > 0: # animated icon if it is heating
         heaterImg = HEATER_HEATING_IMG
 
     bedTemp = float(printer_json["temperature"]["bed"]["actual"])
     bedTempTarget = float(printer_json["temperature"]["bed"]["target"])
     bedImg = BED_IMG
-    if bedTempTarget != None:
+    if bedTempTarget != None and bedTempTarget > 0:
         bedImg = BED_HEATING_IMG
 
     render_temp = render.Row([
