@@ -17,6 +17,7 @@ DEFAULT_ADDR = ""
 DEFAULT_PORT = "32400"
 DEFAULT_PLEXTOKEN = ""
 DEFAULT_PLAYER = ""
+CACHE_TTL = 45
 
 def main(config):
     addr = config.get("addr", DEFAULT_ADDR)
@@ -115,7 +116,7 @@ def update_plex_status(addr, port, token, player):
     else:
         album = t.query("@parentTitle")
 
-    print("%s - %s" % (artist, title))
+    #print("%s - %s" % (artist, title))
 
     thumbnail_path = t.query("@thumb")
     thumbnail_url = "http://%s:%s%s?X-Plex-Token=%s" % (addr,port,thumbnail_path,token)
@@ -128,10 +129,10 @@ def update_plex_status(addr, port, token, player):
         "thumbnail": thumbnail_rep.body()
     }
 
-    cache.set("title", trackInfo["title"])
-    cache.set("artist", trackInfo["artist"])
-    cache.set("album", trackInfo["album"])
-    cache.set("thumbnail", base64.encode(trackInfo["thumbnail"]))
+    cache.set("title", trackInfo["title"], CACHE_TTL)
+    cache.set("artist", trackInfo["artist"], CACHE_TTL)
+    cache.set("album", trackInfo["album"], CACHE_TTL)
+    cache.set("thumbnail", base64.encode(trackInfo["thumbnail"]), CACHE_TTL)
 
     return trackInfo
 
